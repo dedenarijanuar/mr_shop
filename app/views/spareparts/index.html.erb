@@ -71,7 +71,7 @@
                     <td><%= p.desc rescue '-' %></td>
 				          	<td>$<%= p.price rescue '-' %></td>
                           <td>
-                            <% if @add_spareparts.include?(p.id.to_s) %>
+                            <% if (@add_spareparts.include?(p.id.to_s) rescue false)  %>
                               <a href="<%= add_sparepart_path(p.id, remove: true) %>" class="btn btn-default m-btn m-btn--icon" title="Edit" style="margin-bottom: 5px;">
                                 <span>
                                   <i class="la la-remove"></i>

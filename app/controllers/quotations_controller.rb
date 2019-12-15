@@ -4,7 +4,7 @@ class QuotationsController < ApplicationController
 	end
 
 	def order_details
-		return (flash[:error] = "please add spareparts and labours first" and redirect_to spareparts_path) if @add_spareparts.empty? || @add_labours.empty?
+		return (flash[:error] = "please add spareparts and labours first" and redirect_to spareparts_path) if @add_spareparts.blank? || @add_labours.blank?
 		@spareparts = Sparepart.where(id: @add_spareparts) rescue []
 		@labours = Labour.where(id: @add_labours) rescue []
 
