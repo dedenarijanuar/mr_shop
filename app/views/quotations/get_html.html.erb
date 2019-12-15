@@ -1,0 +1,85 @@
+<header class="clearfix">
+  <!-- <div id="logo">
+    <img src="logo.png">
+  </div> -->
+  <h1>Quotation Review</h1>
+  <div id="company" class="clearfix">
+  	<%= @quotation.created_at.strftime("%a, %m-%Y %H:%M %p") %>
+  </div>
+</header>
+<main>
+  <h3> &nbsp; Spare Part List</h3>
+  <table>
+    <thead>
+      <tr>
+        <th class="service">NAME</th>
+        <th class="desc">DESC</th>
+        <th>QTY</th>
+        <th>PRICE</th>
+        <th>TOTAL</th>
+      </tr>
+    </thead>
+    <tbody>
+    	<% @spareparts.each do |p|%>
+        <tr>
+	        <td class="service"><%= p.name rescue '-' %></td>
+	        <td class="desc"><%= p.desc rescue '-' %></td>
+	        <td class="qty">1</td>
+	        <td class="unit">$40.00</td>
+	        <td class="total">$<%= p.price rescue '-' %></td>
+	    </tr>
+      <% end %>
+      <tr>
+        <td colspan="4">SUBTOTAL</td>
+        <td class="total">$<%= @spareparts.pluck(:price).sum %></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3> &nbsp; Labours List</h3>
+  <table>
+    <thead>
+      <tr>
+        <th class="service">NAME</th>
+        <th class="desc">DESC</th>
+        <th>QTY</th>
+        <th>PRICE</th>
+        <th>TOTAL</th>
+      </tr>
+    </thead>
+    <tbody>
+    	<% @labours.each do |p|%>
+        <tr>
+	        <td class="service"><%= p.name rescue '-' %></td>
+	        <td class="desc"><%= p.desc rescue '-' %></td>
+	        <td class="qty">1</td>
+	        <td class="unit">$40.00</td>
+	        <td class="total">$<%= p.price rescue '-' %></td>
+	    </tr>
+      <% end %>
+      <tr>
+        <td colspan="4">SUBTOTAL</td>
+        <td class="total">$<%= @labours.pluck(:price).sum %></td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <tbody>
+      <tr>
+        <td colspan="4" class="grand total">Discount (%)</td>
+        <td class="grand total"><%= @quotation.discount.to_i rescue 0 %></td>
+      </tr>
+      <tr>
+        <td colspan="4" class="total " >GRAND TOTAL</td>
+        <td class="total">$<%= @quotation.total_price %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div id="notices">
+    <div>NOTICE:</div>
+    <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
+  </div>
+</main>
+<!-- <footer>
+  Invoice was created on a computer and is valid without the signature and seal.
+</footer> -->

@@ -1,0 +1,2 @@
+class QuotationSparepart < ApplicationRecord
+end

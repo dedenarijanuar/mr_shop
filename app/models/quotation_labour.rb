@@ -1,0 +1,2 @@
+class QuotationLabour < ApplicationRecord
+end

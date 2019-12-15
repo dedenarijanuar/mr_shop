@@ -1,0 +1,19 @@
+
+.login-tabs {
+	margin-bottom: 40px;
+	.nav-tabs {
+		display: block;
+		text-align: center;
+		li {
+			display: inline-block;
+			margin-right:25px;
+			margin-left:25px;
+		}
+	}
+}
+.m-login.m-login--2 .m-login__wrapper .m-login__container .m-login__form {
+	margin-top: 30px;
+}
+.m-login__title {
+	font-weight: 300;
+}

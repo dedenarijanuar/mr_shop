@@ -1,0 +1,244 @@
+
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+  <!-- BEGIN: Subheader -->
+  <div class="m-subheader ">
+    <div class="d-flex align-items-center">
+      <div class="mr-auto">
+        <h3 class="m-subheader__title ">Quotation Review</h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- END: Subheader -->
+  <div class="m-content">
+
+    <!--Begin::Section-->
+    <div class="row">
+      <div class="col-xl-6">
+
+        <!--begin:: Widgets/Top Products-->
+        <div class="m-portlet m-portlet--mobile m-portlet--full-height ">
+          <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+              <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                  Spare Part Review
+                </h3>
+              </div>
+            </div>
+            <div class="m-portlet__head-tools">
+              <div class="m-form__group">
+                <a href="<%= spareparts_path  %>" class="btn btn-primary">
+                  <i class="flaticon-add-circular-button"></i>
+                  <span>Add More Spare Parts</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="m-portlet__body">
+            <div class="m-section">
+              <div class="m-section__content">
+                <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                  <div class="table-responsive">
+                    <table class="table table-striped- table-bordered table-hover table-checkable" id="m_table_1">
+                      <thead>
+                        <tr class="text-center">
+                          <th>Name</th>
+                          <th>Price</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <% @spareparts.each do |p|%>
+                        <tr class='clickable-row' data-href='#'>
+                    <td><%= p.name rescue '-' %></td>
+                    <td>$<%= p.price rescue '-' %></td>
+                          <td>
+                            <% if @add_spareparts.include?(p.id.to_s) %>
+                              <a href="<%= add_sparepart_path(p.id, remove: true) %>" class="btn btn-default m-btn m-btn--icon" title="Edit" style="margin-bottom: 5px;">
+                                <span>
+                                  <i class="la la-remove"></i>
+                                  <span>Remove</span>
+                                </span>
+                              </a>
+                            <% else %>
+                              <a href="<%= add_sparepart_path(p.id) %>" class="btn btn-success m-btn m-btn--icon" title="Edit" style="margin-bottom: 5px;">
+                                  <span>
+                                    <i class="la la-plus"></i>
+                                    <span>Add</span>
+                                  </span>
+                                </a>
+                            <% end %>
+                          </td>
+                        </tr>
+                        <% end %>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!--end:: Widgets/Top Products-->
+      </div>
+
+      <div class="col-xl-6">
+
+        <!--begin:: Widgets/Top Products-->
+        <div class="m-portlet m-portlet--mobile m-portlet--full-height ">
+          <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+              <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                  Labours Review
+                </h3>
+              </div>
+            </div>
+            <div class="m-portlet__head-tools">
+              <div class="m-form__group">
+                <a href="<%= labours_path  %>" class="btn btn-primary">
+                  <i class="flaticon-add-circular-button"></i>
+                  <span>Add More Labours</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="m-portlet__body">
+            <div class="m-section">
+              <div class="m-section__content">
+                <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                  <div class="table-responsive">
+                    <table class="table table-striped- table-bordered table-hover table-checkable" id="m_table_1">
+                      <thead>
+                        <tr class="text-center">
+                          <th>Name</th>
+                          <th>Price</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <% @labours.each do |p|%>
+                        <tr class='clickable-row' data-href='#'>
+                    <td><%= p.name rescue '-' %></td>
+                    <td>$<%= p.price rescue '-' %></td>
+                          <td>
+                            <% if @add_labours.include?(p.id.to_s) %>
+                              <a href="<%= add_labour_path(p.id, remove: true) %>" class="btn btn-default m-btn m-btn--icon" title="Edit" style="margin-bottom: 5px;">
+                                <span>
+                                  <i class="la la-remove"></i>
+                                  <span>Remove</span>
+                                </span>
+                              </a>
+                            <% else %>
+                              <a href="<%= add_labour_path(p.id) %>" class="btn btn-success m-btn m-btn--icon" title="Edit" style="margin-bottom: 5px;">
+                                  <span>
+                                    <i class="la la-plus"></i>
+                                    <span>Add</span>
+                                  </span>
+                                </a>
+                            <% end %>
+                          </td>
+                        </tr>
+                        <% end %>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--end:: Widgets/Top Products-->
+      </div>
+
+      <div class="col-xl-6">
+          <div class="m-portlet m-portlet--tabs m-portlet--full-height product-portlet">
+            <div class="m-portlet__head">
+              <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                  <h5>
+                    Add Discount
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <div class="m-portlet__body">
+              <div class="row" style="margin-bottom:30px;">
+                <%= form_tag quotation_add_discount_path do  %>
+                <div class="form-group m-form__group">
+                  <%= text_field_tag 'discount', nil, class: "form-control m-input m-input--solid", placeholder: 'input discount here..' %>
+                </div>
+                <div class="form-group m-form__group">
+                  * input "MRDISCOUNT" to get 10% discount <br/><br/>
+                  <%= submit_tag 'process', class: 'btn btn-success' %>
+                </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <div class="col-xl-6">
+          <div class="m-portlet m-portlet--tabs m-portlet--full-height product-portlet">
+            <div class="m-portlet__head">
+              <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                  <h5>
+                    Detail Order
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <div class="m-portlet__body">
+              <div class="row" style="margin-bottom:30px;">
+                <div class="col-xl-8">
+                  <div class="order-info">
+                    <div class="fblock clearfix">
+                      <div class="label">Order Date</div>
+                      <div class="text"><%= Time.now.strftime("%a, %m-%Y %H:%M") %></div>
+                    </div>
+                    <div class="fblock clearfix">
+                      <div class="label">Spareparts Order</div>
+                      <div class="text">$<%= @spareparts.pluck(:price).sum %></div>
+                    </div>
+                    <div class="fblock clearfix">
+                      <div class="label">Labours Order</div>
+                      <div class="text">$<%= @labours.pluck(:price).sum %></div>
+                    </div>
+                    <div class="fblock clearfix">
+                      <div class="label">Discount (%)</div>
+                      <div class="text"><%= @add_discount.to_i rescue 0 %></div>
+                    </div>
+                    <div class="fblock clearfix">
+                      <div class="label">Total Order</div>
+                      <div class="text">$<%= @total_order %></div>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="col-xl-12">
+          <a href="<%= quotation_saved_path %>" class="btn btn-success" style="display: inline-block;">
+            <i class="la la-save"></i>
+            <span>Save Quotation</span>
+          </a>
+          <a href="<%= quotation_reset_path %>" class="btn btn-danger" style="display: inline-block;">
+            <i class="flaticon-delete"></i>
+            <span>Reset Quotation</span>
+          </a>
+        </div>
+    </div>
+
+    <!--End::Section-->
+
+  </div>
+</div>

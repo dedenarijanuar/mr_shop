@@ -1,0 +1,111 @@
+
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+  <!-- BEGIN: Subheader -->
+  <div class="m-subheader ">
+    <div class="d-flex align-items-center">
+      <div class="mr-auto">
+        <h3 class="m-subheader__title ">Labours</h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- END: Subheader -->
+  <div class="m-content">
+
+    <!--Begin::Section-->
+    <div class="row">
+      <div class="col-xl-12">
+
+        <!--begin:: Widgets/Top Products-->
+        <div class="m-portlet m-portlet--mobile m-portlet--full-height ">
+          <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+              <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                  Labours List
+                </h3>
+              </div>
+            </div>
+            <div class="m-portlet__head-tools">
+              <div class="m-form__group">
+                <a href="<%= spareparts_path  %>" class="btn btn-success">
+                  <i class="la la-angle-left"></i>
+                  <span>View Back to Add Spare Part</span>
+                </a>
+                <a href="<%= quotation_details_path  %>" class="btn btn-primary">
+                  <i class="la la-angle-right"></i><i class="la la-angle-right"></i>
+                  <span>View Detail</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="m-portlet__body">
+            <div class="m-section">
+              <div class="m-section__content">
+                <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                  <div class="row" style="margin-bottom: 20px">
+                    <div class="col-sm-12 col-md-6">
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                      <div id="m_table_1_filter" class="dataTables_filter">
+                        <label>Search:
+                          <input type="search" class="form-control search_name" placeholder="search sparepart.. " aria-controls="m_table_1" style="min-width: 250px;" name="find" value="<%= params[:find] %>">
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-striped- table-bordered table-hover table-checkable" id="m_table_1">
+                      <thead>
+                        <tr class="text-center">
+                          <th>Date</th>
+                          <th>Name</th>
+                          <th>Desc</th>
+                          <th>Price</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <% @labours.each do |p|%>
+                        <tr class='clickable-row' data-href='#'>
+                           <td><%= p.created_at.to_date %></td>
+				          	<td><%= p.name rescue '-' %></td>
+                    <td><%= p.desc rescue '-' %></td>
+				          	<td>$<%= p.price rescue '-' %></td>
+                          <td>
+                            <% if @add_labours.include?(p.id.to_s) %>
+                              <a href="<%= add_labour_path(p.id, remove: true) %>" class="btn btn-default m-btn m-btn--icon" title="Edit" style="margin-bottom: 5px;">
+                                <span>
+                                  <i class="la la-remove"></i>
+                                  <span>Remove</span>
+                                </span>
+                              </a>
+                            <% else %>
+                              <a href="<%= add_labour_path(p.id) %>" class="btn btn-success m-btn m-btn--icon" title="Edit" style="margin-bottom: 5px;">
+                                  <span>
+                                    <i class="la la-plus"></i>
+                                    <span>Add</span>
+                                  </span>
+                                </a>
+                            <% end %>
+                          </td>
+                        </tr>
+                        <% end %>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--end:: Widgets/Top Products-->
+      </div>
+    </div>
+
+    <!--End::Section-->
+
+  </div>
+</div>
