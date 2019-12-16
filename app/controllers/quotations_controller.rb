@@ -62,8 +62,8 @@ class QuotationsController < ApplicationController
 	def views
 		@quotation = Quotation.find_by_id(params[:id])
 		return (flash[:error] = "quotation not found" and redirect_back(fallback_location: root_path)) if params[:id].blank?
-		qs = @quotation.quotation_spareparts.pluck(:id) rescue []
-		ql = @quotation.quotation_labours.pluck(:id) rescue []
+		qs = @quotation.quotation_spareparts.pluck(:sparepart_id) rescue []
+		ql = @quotation.quotation_labours.pluck(:labour_id) rescue []
 		@spareparts = Sparepart.where(id: qs) rescue []
 		@labours = Labour.where(id: ql) rescue []
 		respond_to do |format|
@@ -78,8 +78,8 @@ class QuotationsController < ApplicationController
 	def get_html
 		@quotation = Quotation.find_by_id(params[:id])
 		return (flash[:error] = "quotation not found" and redirect_back(fallback_location: root_path)) if params[:id].blank?
-		qs = @quotation.quotation_spareparts.pluck(:id) rescue []
-		ql = @quotation.quotation_labours.pluck(:id) rescue []
+		qs = @quotation.quotation_spareparts.pluck(:sparepart_id) rescue []
+		ql = @quotation.quotation_labours.pluck(:labour_id) rescue []
 		@spareparts = Sparepart.where(id: qs) rescue []
 		@labours = Labour.where(id: ql) rescue []
 		render layout: 'get_html'
